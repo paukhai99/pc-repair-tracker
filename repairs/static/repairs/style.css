@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #f3f5f9;
+    color: #1e293b;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1 {
+    margin-bottom: 24px;
+    font-size: 32px;
+    color: #0f172a;
+}
+
+h2 {
+    margin-top: 28px;
+    font-size: 22px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+form,
+article {
+    padding: 24px;
+    margin-bottom: 20px;
+    background: white;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+}
+
+article form {
+    padding: 0;
+    margin: 16px 0 0;
+    border: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+    background: white;
+    color: #1e293b;
+    font: inherit;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #1d4ed8;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+a {
+    display: inline-block;
+    margin: 8px;
+    color: #1d4ed8;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dbe2ea;
+    margin: 24px 0;
+}
+
+article hr {
+    display: none;
+}
+
+article p {
+    overflow-wrap: anywhere;
+}
+
+.errorlist {
+    color: #b91c1c;
+}
