@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PC Repair Tracker</title>
+</head>
+<body>
+    <h1>PC Repair Tracker</h1>
+
+    <h2>Add a repair ticket</h2>
+
+    <form method="post" action="{% url 'ticket_list' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save ticket</button>
+    </form>
+
+    <hr>
+
+    <h2>Your repair tickets</h2>
+
+    <form method="get" action="{% url 'ticket_list' %}">
+        <label for="search">Search by device or problem:</label>
+        <input
+            id="search"
+            type="search"
+            name="q"
+            value="{{ search }}"
+            placeholder="Example: Dell"
+        >
+        <button type="submit">Search</button>
+        <a href="{% url 'ticket_list' %}">Show all</a>
+    </form>
+
+    {% for ticket in tickets %}
+        <article>
+            <h3>#{{ ticket.id }} — {{ ticket.device }}</h3>
+            <p>{{ ticket.problem }}</p>
+
+            <form
+                method="post"
+                action="{% url 'update_status' ticket.id %}"
+            >
+                {% csrf_token %}
+
+                <label for="status-{{ ticket.id }}">Status:</label>
+                <select id="status-{{ ticket.id }}" name="status">
+                    {% for value, label in status_choices %}
+                        <option
+                            value="{{ value }}"
+                            {% if ticket.status == value %}selected{% endif %}
+                        >
+                            {{ label }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Update status</button>
+            </form>
+
+            <hr>
+        </article>
+    {% empty %}
+        <p>No tickets found.</p>
+    {% endfor %}
+</body>
+</html>
