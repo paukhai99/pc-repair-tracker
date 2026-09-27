@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
@@ -6,6 +7,7 @@ from .forms import TicketForm
 from .models import Ticket
 
 
+@login_required
 def ticket_list(request):
     if request.method == "POST":
         form = TicketForm(request.POST)
@@ -37,6 +39,7 @@ def ticket_list(request):
     )
 
 
+@login_required
 @require_POST
 def update_status(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)

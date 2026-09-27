@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | PC Repair Tracker</title>
+    <link rel="stylesheet" href="{% static 'repairs/style.css' %}">
+</head>
+<body>
+    <h1>PC Repair Tracker</h1>
+    <h2>Sign in</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit">Sign in</button>
+    </form>
+</body>
+</html>
