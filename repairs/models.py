@@ -8,7 +8,7 @@ class Ticket(models.Model):
         ("Completed", "Completed"),
     ]
 
-    device = models.CharField(max_length=100)
+    device = models.CharField(max_length=150)
     problem = models.TextField()
     status = models.CharField(
         max_length=20,
